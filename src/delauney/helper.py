@@ -18,6 +18,9 @@ class Point:
         else:
             return False
 
+    def __hash__(self):
+        return hash((self.x, self.y))
+
 class Edge:
     """
     an edge is the connection between two points
@@ -67,21 +70,22 @@ class Triangle:
         gets the circumcenter and circumradius of
         the circumcircle for a given triangle
         """
-        a = determinant([[self.v1[0], self.v1[1], 1],
-                         [self.v2[0], self.v2[1], 1],
-                         [self.v3[0], self.v3[1], 1]])
 
-        bx = determinant([[self.v1[0]**2 + self.v1[1]**2, self.v1[1], 1],
-                          [self.v2[0]**2 + self.v2[1]**2, self.v2[1], 1],
-                          [self.v3[0]**2 + self.v3[1]**2, self.v3[1], 1]])
+        a = determinant([[self.v1.x, self.v1.y, 1],
+                         [self.v2.x, self.v2.y, 1],
+                         [self.v3.x, self.v3.y, 1]])
 
-        by = determinant([[self.v1[0]**2 + self.v1[1]**2, self.v1[0], 1],
-                          [self.v2[0]**2 + self.v2[1]**2, self.v2[0], 1],
-                          [self.v3[0]**2 + self.v3[1]**2, self.v3[0], 1]])
+        bx = determinant([[self.v1.x**2 + self.v1.y**2, self.v1.y, 1],
+                          [self.v2.x**2 + self.v2.y**2, self.v2.y, 1],
+                          [self.v3.x**2 + self.v3.y**2, self.v3.y, 1]])
 
-        c = determinant([[self.v1[0]**2 + self.v1[1]**2, self.v1[0], self.v1[1]],
-                              [self.v2[0]**2 + self.v2[1]**2, self.v2[0], self.v2[1]],
-                              [self.v3[0]**2 + self.v3[1]**2, self.v3[0], self.v3[1]]])
+        by = determinant([[self.v1.x**2 + self.v1.y**2, self.v1.x, 1],
+                          [self.v2.x**2 + self.v2.y**2, self.v2.x, 1],
+                          [self.v3.x**2 + self.v3.y**2, self.v3.x, 1]])
+
+        c = determinant([[self.v1.x**2 + self.v1.y**2, self.v1.x, self.v1.y],
+                              [self.v2.x**2 + self.v2.y**2, self.v2.x, self.v2.y],
+                              [self.v3.x**2 + self.v3.y**2, self.v3.x, self.v3.y]])
 
         # ux, uy are the circumcenter coordinates
         ux = bx / (2*a)
@@ -137,6 +141,9 @@ def determinant(m: List[List[int]]) -> float:
     calculates the determinant of
     an n by n matrix m
     """
+    if not m:
+        return 0
+
     if len(m) == 1 and len(m[0]) == 1:
         return m[0][0]
 

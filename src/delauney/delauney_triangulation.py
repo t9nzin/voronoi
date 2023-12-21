@@ -1,7 +1,6 @@
-from typing import List, Tuple
-from helper import determinant
+from typing import List
 import matplotlib.pyplot as plt
-from delauney.helper import determinant, Triangle, Point, Edge
+from src.delauney.helper import Triangle, Point
 
 """
 TODO:
@@ -10,7 +9,6 @@ TODO:
 # 2 Add dependencies
 # Add complimentary test files test_delauney.py and
 test voronoi.py 
-# Add type hints 
 """
 
 class Delauney:
@@ -130,5 +128,6 @@ if __name__ == "__main__":
 
     d = Delauney(points)
     d.triangulate()
+    d.visualize()
 
     print(len(d.triangulation))
