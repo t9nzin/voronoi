@@ -1,15 +1,7 @@
 from typing import List
-import matplotlib.pyplot as plt
 from src.delauney.helper import Triangle, Point
-
-"""
-TODO:
-
-# 1 Add a readme to explain the specific math
-# 2 Add dependencies
-# Add complimentary test files test_delauney.py and
-test voronoi.py 
-"""
+import pygame
+import sys
 
 class Delauney:
     """
@@ -90,11 +82,32 @@ class Delauney:
         visual representation of the
         Delauney triangulation
         """
-        for triangle in self.triangulation:
-            for edge in triangle.edges:
-                plt.plot([edge.point_1.x, edge.point_1.y, edge.point_2.x, edge.point_2.y])
+        pygame.init()
 
-        plt.show()
+        WIDTH, HEIGHT = 700, 500
+        screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        pygame.display.set_caption("Delauney Triangulation")
+
+        black = (0, 0, 0)
+        white = (255, 255, 255)
+
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+            screen.fill(white)
+
+            for triangle in self.triangulation:
+                for edge in triangle.edges:
+                    start_point = (edge.point_1.x, edge.point_1.y)
+                    end_point = (edge.point_2.x, edge.point_2.y)
+                    pygame.draw.line(screen, black, start_point, end_point, 3)
+
+            pygame.display.flip()
+
+        pygame.quit()
 
 if __name__ == "__main__":
     point_list = [(303, 447),
