@@ -20,7 +20,7 @@ create this repository. [the-fascinating-world-of-voronoi-diagrams](https://towa
 triangulation in which for a given set of points, no point is inside the circumcircle of any triangle within
 the Delauney triangulation. 
 
-![voronoi diagram](https://github.com/t9nz/voronoi/blob/main/voronoi.png?raw=true)
+![voronoi diagram](https://github.com/t9nz/voronoi/blob/main/voronoi.png?raw=true?width="100"?height="100") 
 ![delauney triangulation](https://github.com/t9nz/voronoi/blob/main/delauney.png?raw=true)
 
 ## Getting Started
