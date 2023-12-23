@@ -21,7 +21,7 @@ triangulation in which for a given set of points, no point is inside the circumc
 the Delauney triangulation. 
 
 ![voronoi diagram](https://github.com/t9nz/voronoi/blob/main/voronoi.png?raw=true?width="10"?height="10") 
-![delauney triangulation](https://github.com/t9nz/voronoi/blob/main/delauney.png?raw=true)
+![delauney triangulation](https://github.com/t9nz/voronoi/blob/main/delauney.png?raw=true?width="10"?height="10")
 
 ## Getting Started
 
